@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WritersHub</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Basic styles for layout and modal */
+    body {
+      font-family: Arial, sans-serif;
+    }
+    header {
+      background-color: #333;
+      padding: 10px;
+    }
+    .logo {
+      color: white;
+      font-size: 24px;
+      display: inline-block;
+    }
+    nav ul {
+      list-style-type: none;
+      display: inline-block;
+    }
+    nav ul li {
+      display: inline;
+      margin-right: 20px;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+    }
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+    .auth-buttons {
+      display: inline-block;
+      float: right;
+    }
+    .sign-in, .sign-up {
+      background-color: #f8f9fa;
+      border: none;
+      padding: 8px 16px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+    .sign-in:hover, .sign-up:hover {
+      background-color: #e2e6ea;
+    }
+    .welcome-section {
+      padding: 20px;
+    }
+    .trending-keywords ul {
+      display: inline;
+      padding: 0;
+    }
+    .trending-keywords li {
+      display: inline;
+      margin-right: 10px;
+    }
+    .contact-us a {
+      display: block;
+      margin-top: 10px;
+      text-decoration: none;
+    }
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      padding-top: 100px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .modal-content {
+      background-color: white;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 300px;
+      text-align: center;
+    }
+    .close {
+      color: red;
+      float: right;
+      font-size: 28px;
+      cursor: pointer;
+    }
+    .close:hover {
+      color: darkred;
+    }
+    form input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      box-sizing: border-box;
+    }
+    form button {
+      width: 100%;
+      padding: 10px;
+      background-color: #333;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    form button:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">WRITERSHUB</div>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="getjob.html">Get A Job?</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="findjobs.html">Find Jobs</a></li>
+        <li><a href="testimonials.html">Testimonials</a></li>
+        <li><a href="Q&A.html">Q&A</a></li>
+      </ul>
+      <div class="auth-buttons">
+        <button class="sign-in">Sign In</button>
+        <button class="sign-up">Sign Up</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="welcome-section">
+      <p>Skilled writers on academic projects. We also offer comprehensive training materials and resources to enable beginners to start earning money right away. Experience the support and opportunities you need to succeed with us.</p>
+      <div class="trending-keywords">
+        <span>Trending Keywords: </span>
+        <ul id="keywords-list">
+          <li>Finance</li>
+          <li>Computer Science</li>
+          <li>Nursing</li>
+          <li>Business</li>
+        </ul>
+      </div>
+    </section>
+    
+    <section class="contact-us">
+      <div class="work-inquiry">
+        <a href="#">Work Inquiry from Writershub</a>
+      </div>
+      <div class="whatsapp-contact">
+        <a href="#">Message Us</a>
+      </div>
+    </section>
+
+    <!-- Sign In Modal -->
+    <div id="signInModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeSignIn">&times;</span>
+        <h2>Sign In</h2>
+        <form>
+          <input type="text" placeholder="Username" required>
+          <input type="password" placeholder="Password" required>
+          <button type="submit">Login</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Sign Up Modal -->
+    <div id="signUpModal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="closeSignUp">&times;</span>
+        <h2>Sign Up</h2>
+        <form>
+          <input type="text" placeholder="Username" required>
+          <input type="email" placeholder="Email" required>
+          <input type="password" placeholder="Password" required>
+          <button type="submit">Register</button>
+        </form>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    // Keyword changer
+    const keywords = ["Finance", "Computer Science", "Nursing", "Business", "Marketing", "Psychology", "Literature"];
+    const keywordList = document.getElementById('keywords-list');
+
+    function changeKeyword() {
+      const newKeyword = keywords[Math.floor(Math.random() * keywords.length)];
+      const firstKeyword = keywordList.querySelector('li');
+      firstKeyword.textContent = newKeyword;
+    }
+
+    setInterval(changeKeyword, 2000); // Change keyword every 2 seconds
+
+    // Modal functionality
+    const signInBtn = document.querySelector('.sign-in');
+    const signUpBtn = document.querySelector('.sign-up');
+    const signInModal = document.getElementById('signInModal');
+    const signUpModal = document.getElementById('signUpModal');
+    const closeSignIn = document.getElementById('closeSignIn');
+    const closeSignUp = document.getElementById('closeSignUp');
+
+    signInBtn.addEventListener('click', () => {
+      signInModal.style.display = 'block';
+    });
+
+    signUpBtn.addEventListener('click', () => {
+      signUpModal.style.display = 'block';
+    });
+
+    closeSignIn.addEventListener('click', () => {
+      signInModal.style.display = 'none';
+    });
+
+    closeSignUp.addEventListener('click', () => {
+      signUpModal.style.display = 'none';
+    });
+
+    // Close modal if clicked outside
+    window.onclick = function(event) {
+      if (event.target == signInModal) {
+        signInModal.style.display = 'none';
+      }
+      if (event.target == signUpModal) {
+        signUpModal.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>

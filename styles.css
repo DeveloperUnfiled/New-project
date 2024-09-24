@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+  }
+  
+  header {
+    background-color: #0c1a2e;
+    padding: 10px 20px;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  ul {
+    display: flex;
+    list-style: none;
+  }
+  
+  ul li {
+    margin-left: 20px;
+  }
+  
+  ul li a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .auth-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .auth-buttons button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .sign-in {
+    background-color: #2f4858;
+    color: white;
+  }
+  
+  .sign-up {
+    background-color: #6b47dc;
+    color: white;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  .welcome-section p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  
+  .trending-keywords span {
+    font-weight: bold;
+  }
+  
+  .trending-keywords ul {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .trending-keywords li {
+    background-color: #f44336;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 3px;
+  }
+  
+  .contact-us {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+  
+  .work-inquiry a, .whatsapp-contact a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ffce00;
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .whatsapp-contact a {
+    background-color: #25d366;
+    color: white;
+  }
