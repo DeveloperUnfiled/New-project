@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin-Flip-Game-Practise</title>
+</head>
+<body>
+    <button class="selector-js">Heads</button>
+    <button class="selector2-js">Tails</button>
+    <p class="result-display-js"></p>
+    <p class="display-score-js"></p>
+
+
+    <script>
+    let score= JSON.parse(localStorage.getItem('score'));
+        if(score===null){
+            score={
+                Wins: 0,
+                Losses: 0
+            };
+        }
+        
+        const buttonElement= document.querySelector('.selector-js');
+        buttonElement.addEventListener('click', ()=>{
+            selectMove();
+            playersMove('heads');
+        })
+        const selectElement= document.querySelector('.selector2-js');
+        selectElement.addEventListener('click', ()=>{
+            selectMove(); 
+            playersMove('tails');
+        })
+        
+
+        function playersMove(playerMove){
+            const computerMove= selectMove();
+            let result= '';
+
+            if(playerMove==='heads'){
+                if(computerMove==='heads'){
+                    result= 'Win';
+                }
+            }
+            if(playerMove==='heads'){
+                if(computerMove==='tails'){
+                    result='Lose';
+                }
+            }
+            if(playerMove==='tails'){
+                if(computerMove==='tails'){
+                    result='Win';
+                }
+            }
+            if(playerMove==='tails'){
+                if(computerMove==='heads'){
+                    result='Lose';
+                }
+            }
+            if(result==='Win'){
+                score.Wins+=1;
+            }
+            if(result==='Lose'){
+                score.Losses+=1;
+            }
+            localStorage.setItem('score', JSON.stringify(score));
+
+            document.querySelector('.result-display-js').innerHTML= `You picked: ${playerMove}, Computer picked: ${computerMove}, You: ${result}`;
+            document.querySelector('.display-score-js').innerHTML= `Wins: ${score.Wins}, Losses: ${score.Losses}`;
+            console.log(playerMove);
+            console.log(computerMove);
+            console.log(result);
+            console.log(score.Wins);
+            console.log(score.Losses);
+        }
+        
+        
+
+        
+        
+        function selectMove(){
+            const randomMove= Math.random();
+            let computerMove='';
+            if(randomMove >=0 && randomMove < 1/2){
+                computerMove= 'heads';
+            }
+            else if(randomMove >=1/2 && randomMove < 1){
+                computerMove= 'tails';
+            }
+
+            return computerMove;
+        }
+    </script>
+</body>
+</html>

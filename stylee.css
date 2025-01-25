@@ -1,0 +1,124 @@
+*{
+    padding:0;
+    margin:0;
+    
+}
+body{
+    background-image: url(background.jpg);
+    background-size:cover;
+    background-position: center;
+    background-color: black;
+}
+.set-up{
+background-color: green;
+text-align:center;
+height:60px;
+}
+.set-up ul{
+    display:inline-flex;
+    color:blue;
+    list-style: none;
+}
+.set-up ul li{
+    margin:10px 15px;
+    padding:5px 8px;
+    width:120px;
+    position: relative;
+}
+.set-up ul li a{
+    text-decoration: none;
+    color:white;
+}
+.active,.set-up ul li:hover{
+color: red;
+border-radius: 3px;
+}
+.mentor{
+    display: none;
+}
+.set-up ul li:hover .mentor{
+    display:block;
+    position:absolute;
+    background: rgb(0,100,0);
+    margin-top: 5px;
+    margin-left: -15px;
+    }
+    .set-up ul li:hover .mentor ul{
+        display:block;
+        margin-top:0px;
+    }
+    .set-up ul li:hover .mentor ul li{
+        width:150px;
+        padding:10px;
+        border-bottom: 1px dotted #fff;
+        background: transparent;
+        border-radius: 0;
+        text-align: left;
+    }
+    .set-up ul li:hover .mentor ul li:last-child{
+        border-bottom: none;
+    }
+    .sub-menu{
+        display:none;
+    }
+    .latest:hover .sub-menu{
+        display:block;
+        background-color:green;
+        margin-top:-40px;
+        margin-left:160px;
+        position:absolute;
+    }
+    .login-details{
+        display:block;
+        padding: 10px 15px;
+    }
+    .Text-box{
+        display:block;
+        padding-top:8px;
+        padding-bottom:8px;
+        margin-left: 650px;
+        margin-top:200px;
+        padding-right:20px;
+
+    }
+    .Last-vom{
+        display:block;
+        padding-top:8px;
+        padding-bottom:8px;
+        margin:15px 650px;
+        padding-right:20px;
+    }
+    .Email-text{
+        display:block;
+        padding-top:8px;
+        padding-bottom:8px;
+        margin:15px 650px;
+        padding-right:20px;
+    }
+    .unfiled{
+        background-color:blue;
+    }
+    .mustered{
+        background-color:blue;
+     }
+     .redme{
+        margin-bottom:10px;
+        margin-left:650px;
+        display:inline-block;
+        font-size:11px;
+     }
+     .i-phone{
+        margin-bottom:10px;
+        font-size:11px;
+        margin-left:10px;
+     }
+     .redme:hover{
+        background-color:green;
+        cursor:pointer;
+        color:white;
+     }
+     .i-phone:hover{
+        background-color: green;
+        cursor:pointer;
+        color:white;
+     }

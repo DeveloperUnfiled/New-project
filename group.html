@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Signup Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-content {
+            padding: 20px;
+            border-radius: 10px;
+            background: #f1f1f1;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: none;
+        }
+
+        .form-content.active {
+            display: block;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .recaptcha {
+            margin: 20px 0;
+        }
+
+        .recaptcha label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .recaptcha input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .login-form {
+            background: #dff9fb;
+        }
+
+        .signup-form {
+            background: #f6e58d;
+        }
+
+        .form-toggle {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .form-toggle a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .form-toggle a:hover {
+            text-decoration: underline;
+        }
+
+        .container::before {
+            content: url('rose_flower.png');
+            display: block;
+            margin: 20px auto;
+            width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <!-- Login Form -->
+            <div class="form-content login-form active">
+                <h2>Login</h2>
+                <form action="/login" method="post">
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+                <div class="form-toggle">
+                    <p>Don't have an account? <a href="#" onclick="toggleForm('signup')">Sign up</a></p>
+                </div>
+            </div>
+            
+            <!-- Signup Form -->
+            <div class="form-content signup-form">
+                <h2>Signup</h2>
+                <form action="/signup" method="post">
+                    <input type="text" name="name" placeholder="Name" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    
+                    <!-- Simulated reCAPTCHA -->
+                    <div class="recaptcha">
+                        <label for="recaptcha">Solve the following: <span id="recaptcha-question">5 + 3</span></label>
+                        <input type="text" id="recaptcha" name="recaptcha" placeholder="Your answer" required>
+                    </div>
+                    
+                    <button type="submit">Signup</button>
+                </form>
+                <div class="form-toggle">
+                    <p>Already have an account? <a href="#" onclick="toggleForm('login')">Login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleForm(formType) {
+            const loginForm = document.querySelector('.login-form');
+            const signupForm = document.querySelector('.signup-form');
+
+            if (formType === 'signup') {
+                loginForm.classList.remove('active');
+                signupForm.classList.add('active');
+            } else {
+                signupForm.classList.remove('active');
+                loginForm.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

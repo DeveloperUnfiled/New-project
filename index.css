@@ -1,0 +1,46 @@
+*{
+    body{
+        background-color: grey;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+    form{
+        display:flex;
+        flex-direction:column;
+        width: 50vh;
+        height:70vh;
+        align-items:center;
+        margin-top:40px;
+        margin-bottom:40px;
+        background-color:white;
+        border-style:solid;
+        border-radius:40px;
+        border-color:black;
+
+    }
+    label{
+        font-size:14px;
+        font-style:normal;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color:black;
+        margin-top: 20px;
+    }
+    .comment{
+        border-style:solid;
+        border-radius: 10px;
+        height: fit-content;
+        width: 35vh;
+        margin-bottom:20px;
+        padding: 10px 10px;
+    }
+    input{
+        padding-left:10px;
+        padding-right:10px;
+        margin:5px 10px;
+        width:30vh;
+        height:30px;
+        border-style:solid;
+        border-radius:10px;
+    }
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ward1 Candidates</title>
+    <style>
+        .candidate {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .candidate img {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Candidates in Ward1</h1>
+    <div id="ward1-container"></div>
+
+    <script>
+        const candidatesData = {
+            "County1": {
+                "Constituency1": {
+                    "Ward1": ["Candidate A", "Candidate B"],
+                    "Ward2": ["Candidate C"]
+                },
+                "Constituency2": {
+                    "Ward1": ["Candidate D"]
+                }
+            },
+            "County2": {
+                "Constituency1": {
+                    "Ward1": ["Candidate E", "Candidate F"]
+                }
+            }
+        };
+
+        // Function to display candidates in Ward1
+        function displayCandidates(wardName) {
+            const container = document.getElementById('ward1-container');
+            container.innerHTML = ''; // Clear any existing content
+            
+            // Iterate through counties, constituencies, and wards
+            for (const county in candidatesData) {
+                for (const constituency in candidatesData[county]) {
+                    if (candidatesData[county][constituency][wardName]) {
+                        const candidates = candidatesData[county][constituency][wardName];
+
+                        // Create elements for each candidate
+                        candidates.forEach(candidate => {
+                            const candidateDiv = document.createElement('div');
+                            candidateDiv.className = 'candidate';
+
+                            const img = document.createElement('img');
+                            img.src = `images/IMG_20221231_145725_179.jpg`; // Placeholder image
+                            img.alt = candidate;
+
+                            const radio = document.createElement('input');
+                            radio.type = 'radio';
+                            radio.name = 'candidate';
+                            radio.value = candidate;
+
+                            const label = document.createElement('label');
+                            label.textContent = candidate;
+
+                            candidateDiv.appendChild(img);
+                            candidateDiv.appendChild(radio);
+                            candidateDiv.appendChild(label);
+
+                            container.appendChild(candidateDiv);
+                        });
+                    }
+                }
+            }
+        }
+
+        // Call the function to display candidates for Ward1
+        displayCandidates('Ward1');
+    </script>
+</body>
+</html>

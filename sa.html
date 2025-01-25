@@ -1,0 +1,51 @@
+<!-- residence.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Residence Selection</title>
+</head>
+<body>
+    <h1>Select Your Residence</h1>
+    <form id="residenceForm">
+        <label for="county">County:</label>
+        <select id="county" name="county" required>
+            <option value="County1">County 1</option>
+            <option value="County2">County 2</option>
+            <!-- Add more counties -->
+        </select>
+        <br><br>
+
+        <label for="constituency">Constituency:</label>
+        <select id="constituency" name="constituency" required>
+            <option value="Constituency1">Constituency 1</option>
+            <option value="Constituency2">Constituency 2</option>
+            <!-- Add more constituencies -->
+        </select>
+        <br><br>
+
+        <label for="ward">Ward:</label>
+        <select id="ward" name="ward" required>
+            <option value="Ward1">Ward 1</option>
+            <option value="Ward2">Ward 2</option>
+            <!-- Add more wards -->
+        </select>
+        <br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('residenceForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent form submission
+            const county = document.getElementById('county').value;
+            const constituency = document.getElementById('constituency').value;
+            const ward = document.getElementById('ward').value;
+
+            // Redirect to candidates page with query parameters
+            window.location.href = `ca.html?county=${county}&constituency=${constituency}&ward=${ward}`;
+        });
+    </script>
+</body>
+</html>

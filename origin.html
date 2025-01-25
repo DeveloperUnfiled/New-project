@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>County and Constituency Selector</title>
+</head>
+<body>
+    <label for="county">Select County:</label>
+    <select id="county">
+        <option value="">-- Select County --</option>
+        <option value="01">Mombasa</option>
+    <option value="02">Kwale</option>
+    <option value="03">Kilifi</option>
+    <option value="04">Tana River</option>
+    <option value="05">Lamu</option>
+    <option value="06">Taita-Taveta</option>
+    <option value="07">Garissa</option>
+    <option value="08">Wajir</option>
+    <option value="09">Mandera</option>
+    <option value="10">Marsabit</option>
+    <option value="11">Isiolo</option>
+    <option value="12">Meru</option>
+    <option value="13">Tharaka-Nithi</option>
+    <option value="14">Embu</option>
+    <option value="15">Kitui</option>
+    <option value="16">Machakos</option>
+    <option value="17">Makueni</option>
+    <option value="18">Nyandarua</option>
+    <option value="19">Nyeri</option>
+    <option value="20">Kirinyaga</option>
+    <option value="21">Murang'a</option>
+    <option value="22">Kiambu</option>
+    <option value="23">Turkana</option>
+    <option value="24">West Pokot</option>
+    <option value="25">Samburu</option>
+    <option value="26">Trans-Nzoia</option>
+    <option value="27">Uasin Gishu</option>
+    <option value="28">Elgeyo-Marakwet</option>
+    <option value="29">Nandi</option>
+    <option value="30">Baringo</option>
+    <option value="31">Laikipia</option>
+    <option value="32">Nakuru</option>
+    <option value="33">Narok</option>
+    <option value="34">Kajiado</option>
+    <option value="35">Kericho</option>
+    <option value="36">Bomet</option>
+    <option value="37">Kakamega</option>
+    <option value="38">Vihiga</option>
+    <option value="39">Bungoma</option>
+    <option value="40">Busia</option>
+    <option value="41">Siaya</option>
+    <option value="42">Kisumu</option>
+    <option value="43">Homa Bay</option>
+    <option value="44">Migori</option>
+    <option value="45">Kisii</option>
+    <option value="46">Nyamira</option>
+    <option value="47">Nairobi</option>
+    </select>
+
+    <label for="constituency">Select Constituency:</label>
+    <select id="constituency">
+        <option value="">-- Select Constituency --</option>
+    </select>
+
+    <label for="ward">Select Ward:</label>
+    <select id="ward">
+        <option value="">-- Select Ward --</option>
+    </select>
+
+    <script>
+        // Data for counties and their constituencies
+        const countyConstituencies = {
+            Mombasa: ["Mvita", "Kisauni", "Likoni", "Nyali", "Changamwe"],
+            Kwale: ["Msambweni","Matuga","Kinango","Lunga Lunga"],
+            Kilifi: ["Kilifi North","Kilifi South","Ganze","Kaloleni","Magarini","Rabai"],
+            TanaRiver: ["Galole","Garsen","Bura"],
+            Lamu: ["Lamu East","Lamu West"],
+            TaitaTaveta: ["Taveta","Wandanyi","Mwatate","Voi"],
+            Garissa: ["Garissa Township","Balambala","Lagdera","Dadaab","Fafi","Ijara"],
+            Wajir: ["Wajir East","Wajir West","Tarbaj","Wajir North","Wajir South"],
+            Mandera: ["Mandera East","Mandera West","Mandera North","Banisa","Lafey"],
+            Marsabit: ["Saku","North Horr","Laisamis","Moyale"],
+            Isiolo: ["Isiolo North","Isiolo South"],
+            Meru: ["Igembe North","Igembe Central","Igembe South","Tigania West","Tigania East","North Imenti","South Imenti","Central Imenti"],
+            TharakaNithi: ["Tharaka","Chuka/Igambang'ombe","Maara"],
+            Embu: ["Manyatta","Runyenjes","Mbeere North","Mbeere South"],
+            Kitui: ["Kitui Central","Kitui East","Kitui West","Kitui South","Mwingi North","Mwingi West","Mwingi Central"],
+            Machakos: ["Machakos Town","Masinga","Yatta","Kangundo","MatunguluKathianiMavokoMwala"],
+            Makueni: ["Makueni","Kilome","Kaiti","Kibwezi West","Kibwezi East"],
+            Nyandarua: ["Kinangop", "Kipipiri", "Ol Kalou", "Ol Jorok", "Ndaragwa"],
+            Nyeri: ["Tetu","Kieni","Mathira","Othaya","Mukurweini","Nyeri Town"],
+            Kirinyaga: ["Mwea","Gichugu","Ndia","Kirinyaga Central"],
+            Muranga: ["Kangema","Mathioya","Kiharu","Kigumo","Maragwa","Kandara","Gatanga"],
+            Kiambu: ["Gatundu South","Gatundu North","Juja","Thika Town","Ruiru","Githunguri","Kiambu","Kiambaa","Kabete","Kikuyu","Limuru","Lari"],
+            Turkana: ["Turkana North","Turkana West","Turkana Central","Turkana South","Turkana East","Loima"],
+            WestPokot:["Kapenguria","Sigor","Kacheliba","Pokot South"],
+            Samburu: ["Kwanza","Endebess","Saboti","Kiminini","Cherangany"],
+            TransNzoia: ["Kwanza","Endebess","Saboti","Kiminini","Cherangany"],
+            UasinGishu: ["Ainabkoi","Kapseret","Kesses","Moiben","SoyTurbo"],
+            ElgeyoMarakwet: ["Marakwet East","Marakwet West","Keiyo North","Keiyo South"],
+            Nandi: ["Nandi Hills","Chesumei","Emgwen","Aldai","Tinderet","Mosop"],
+            Baringo: ["Baringo North","Baringo Central","Baringo SouthMogotioTiatyEldama Ravine"],
+            Laikipia: ["Laikipia West","Laikipia East","Laikipia North"],
+            Nakuru: ["Naivasha","Gilgil","Rongai","Subukia","Nakuru Town East","Nakuru Town West","Bahati","Njoro","Molo","Kuresoi North","Kuresoi South"],
+            Narok: ["Narok North","Narok East","Narok South","Narok West","Emurua Dikirr","Kilgoris"],
+            Kajiando: ["Kajiado North","Kajiado Central","Kajiado East","Kajiado West","Kajiado South"],
+            Kericho: ["Ainamoi","Belgut","Bureti","Kipkelion East","Kipkelion West","Soin/Sigowet"],
+            Bomet: ["Bomet East","Bomet Central","Sotik","Chepalungu","Konoin"],
+            Kakamega: ["Lurambi","Ikolomani","Shinyalu","Malava","Mumias East","Mumias West","Matungu","Butere","Khwisero","Navakholo","Lugari"],
+            Vihiga: ["Vihiga","Sabatia","Hamisi","Emuhaya","Luanda"],
+            Bugoma: ["Kimilili","Webuye East","Webuye West","Kabuchai","Sirisia","Tongaren","Kanduyi","Bumula","Mt. Elgon"],
+            Busia: ["Teso North","Teso South","Nambale","Matayos","Butula","Funyula","Budalangi"],
+            Siaya: ["Alego Usonga","Gem","Ugenya","Ugunja","Rarieda","Bondo"],
+            Kisumu: ["Kisumu East","Kisumu West","Kisumu Central","Seme","Nyando","Muhoroni","Nyakach"],
+            HomaBay: ["Homa Bay Town","Rangwe","Ndhiwa","Kabondo Kasipul","Kasipul","Suba North","Suba South"],
+            Migori: ["Rongo","Awendo","Suna East","Suna West","Uriri","Nyatike","Kuria East","Kuria West"],
+            Kisii: ["Kitutu Chache North","Kitutu Chache South","Nyaribari Chache","Nyaribari Masaba","Bobasi","Bonchari","South Mugirango"],
+            Nyamira: ["West Mugirango","North Mugirango","Borabu","Kitutu Masaba"],
+            Nairobi: ["Westlands","Dagoretti North","Dagoretti South","Lang'ata","Kibra","Roysambu","Kasarani","Ruaraka","Embakasi North","Embakasi South","Embakasi Central","Embakasi East","Embakasi West","Makadara","Kamukunji","Starehe","Mathare"],
+            
+        };
+
+        const constituencyWard={
+                Changamwe: ["Port Reitz", "Kipevu", "Airport", "Chaani"],
+                Jomvu: ["Mikindani", "Jomvu Kuu", "Kwa Jomvu"],
+                Kisauni: ["Bamburi", "Mtopanga", "Junda", "Magogoni", "Shanzu"],
+                Likoni: ["Mtongwe", "Shika Adabu", "Likoni", "Bofu", "Timbwani"],
+                Nyali: ["Frere Town", "Kongowea", "Kadzandani", "Bamburi", "Mkomani"],
+                Mvita: ["Old Town", "Majengo", "Tudor", "Ganjoni/Shimanzi", "Tononoka"],
+                Msambweni: ["Gombato/Bongwe", "Ukunda", "Kinondo", "Ramisi"],
+                Matuga: ["Kubo South", "Tiwi", "Waa", "Tsimba/Golini"],
+                Kinango: ["Puma", "Ndavaya", "Mackinnon Road", "Taru", "Samburu/Chengoni"],
+                LungaLunga: ["Dzombo", "Pongwe/Kikoneni", "Vanga", "Mwereni"],
+                KilifiNorth: ["Tezo", "Matsangoni", "Watamu", "Mnarani", "Dabaso"],
+                KilifiSouth: ["Junju", "Mtwapa", "Shimo La Tewa", "Chasimba"],
+                Ganze: ["Ganze", "Bamba", "Sokoke", "Jaribuni"],
+                Kaloleni: ["Kaloleni", "Mariakani", "Rabai/Kisurutini", "Kayafungo"],
+                Magarini: ["Adu", "Marafa", "Magarini", "Sabaki", "Gongoni"],
+                Rabai: ["Mwawesa", "Ruruma", "Jibana", "Ribe"],
+                GaloleWards: ["Mikinduni", "Chewani", "Wayu", "Garsen Central"],
+                GarsenWards: ["Garsen South", "Garsen North", "Kipini West", "Kipini East"],
+                BuraWards: ["Madogo", "Chewele", "Bura", "Bangale"],
+                LamuEast: ["Faza", "Kiunga", "Basuba"],
+                LamuWest: ["Mpeketoni", "Hongwe", "Bahari", "Witu", "Hindi"],
+                Taveta: ["Mboghoni", "Chala", "Taveta"],
+                Wundanyi: ["Wundanyi/Mbale", "Werugha", "Wumingu/Kishushe"],
+                Mwatate: ["Ronge", "Mwatate", "Bura", "Chawia"],
+                Voi: ["Kaloleni", "Ngolia", "Marungu", "Kasigau", "Sagalla"],
+                GarissaTownship: ["Township", "Waberi", "Iftin"],
+                Balambala: ["Balambala", "Saka", "Jarajara", "Sankuri"],
+                Lagdera: ["Modogashe", "Benane", "Goreale", "Maalimin"],
+                Dadaab: ["Dertu", "Dadaab", "Labasigale", "Damajale"],
+                Fafi: ["Bura", "Dekaharia", "Nanighi", "Alinjugur"],
+                Ijara: ["Masalani", "Hulugho", "Sangailu"],
+                WajirEast: ["Barwago", "Township", "Khorof Harar"],
+                WajirWest: ["Hadado/Athibohol", "Ademasajida", "Ganyure/Wagalla", "Arbajahan"],
+                WajirNorth: ["Bute", "Korondile", "Danaba", "Gurar", "Godoma"],
+                Tarbaj: ["Elben", "Sarman", "Wargadud", "Tarbaj"],
+                Eldas: ["Della", "Eldas", "Elnur/Tula Tula"],
+                WajirSouth: ["Habaswein", "Ibrahim Ure", "Lagboghol South", "Diff", "Burder", "Banane"],
+                ManderaWest: ["Takaba South", "Takaba", "Lagsure", "Dandu", "Gither"],
+                Banissa: ["Banissa", "Guba", "Malkamari", "Derkale", "Kiliwehiri"],
+                ManderaNorth: ["Ashabito", "Rhamu", "Rhamu Dimtu", "Guticha"],
+                ManderaSouth: ["Wargadud", "Elwak South", "Elwak North", "Shimbir Fatuma"],
+                ManderaEast: ["Township", "Khalalio", "Neboi", "Arabia"],
+                Lafey: ["Lafey", "Waranqara", "Alango Gof", "Fino"],
+                Moyale: ["Butiye", "Sololo", "Uran", "Obbu", "Heillu/Manyatta"],
+                NorthHorr: ["Maikona", "Turbi", "Dukana", "Illeret"],
+                Saku: ["Sagante/Jaldesa", "Marsabit Central", "Karare"],
+                Laisamis: ["Loglogo", "Korr/Ngurunit", "Laisamis", "Kargi/South Horr"],
+                IsioloNorth: ["Wabera", "Bulapesa", "Ngaremara", "Burat", "Oldonyiro"],
+                IsioloSouth: ["Kinna", "Garbatulla", "Sericho"],
+                IgembeSouth: ["Akachiu", "Athiru Ruujine", "Kanuni", "Njia"],
+                IgembeCentral: ["Igembe East", "Kangeta", "Kambi Ya Mawe"],
+                IgembeNorth: ["Amwathi", "Antubetwe Kiongo", "Naari"],
+                TiganiaWest: ["Akithii", "Athwana", "Mbeu", "Nkandone"],
+                TiganiaEast: ["Kianjai", "Mikinduri", "Thangatha", "Kanuni"],
+                NorthImenti: ["Municipality", "Ntima East", "Ntima West", "Nyaki East", "Nyaki West"],
+                CentralImenti: ["Abothuguchi Central", "Abothuguchi West", "Kiagu", "Mwanganthia"],
+                SouthImenti: ["Igoji East", "Igoji West", "Nkuene", "Mitunguu", "Nkubu"],
+                Maara: ["Mitheru", "Mwimbi", "Ganga"],
+                Tharaka: ["Tharaka North", "Tharaka South"],
+                ChukaIgambangombe: ["Chuka", "Igambang'ombe", "Magumoni"],
+                Manyatta: ["Ruguru-Ngandori", "Nginda", "Kithimu", "Mbuvori"],
+                Runyenjes: ["Kyeni North", "Kyeni South", "Kagaari South", "Kagaari North"],
+                MbeereNorth: ["Nthawa", "Evurore", "Muminji"],
+                MbeereSouth: ["Makima", "Mwea", "Mbeti North", "Mavuria"],
+                KituiCentral: ["Mulango", "Township", "Kyangwithya West", "Kyangwithya East"],
+                KituiEast: ["Zombe/Mwitika", "Nzambani", "Mutito/Kaliku", "Endau/Malalani"],
+                KituiSouth: ["Ikanga/Kyatune", "Mutomo", "Ikutha", "Kanziko", "Athi"],
+                KituiWest: ["Mutonguni", "Kwa Mutonga/Kithumula", "Matinyani", "Migwani"],
+                MwingiCentral: ["Nguni", "Mui", "Kivou", "Waita"],
+                MwingiWest: ["Kyome/Thaana", "Ngomeni", "Tseikuru", "Kyuso"],
+                MwingiNorth: ["Ngomeni", "Tseikuru", "Kyuso"],
+                MachakosTown: ["Muvuti/Kiima-Kimwe", "Mutituni", "Katoloni"],
+                Mwala: ["Mbiuni", "Makutano", "Kibauni"],
+                Kangundo: ["Kangundo North", "Kangundo Central", "Kangundo South"],
+                Kathiani: ["Mitaboni", "Kangundo East", "Iveti"],
+                Masinga: ["Masinga Central", "Masinga East", "Ekalakala"],
+                Yatta: ["Ndalani", "Kithimani", "Katangi"],
+                Matungulu: ["Matungulu East", "Matungulu North", "Matungulu West"],
+                Mavoko: ["Athi River", "Syokimau/Mulolongo"],
+                Makueni: ["Wote", "Kathonzweni", "Mavindini", "Kitise"],
+                Kaiti: ["Kilome", "Kee", "Ukia"],
+                KibweziEast: ["Mtito Andei", "Nguu/Masumba", "Masongaleni"],
+                KibweziWest: ["Makindu", "Nguumo", "Emali/Mulala"],
+                Kilome: ["Kikumbulyu North", "Kikumbulyu South", "Kasikeu"],
+                Kinangop: ["Murungaru", "North Kinangop", "Engineer"],
+                Kipipiri: ["Miharati", "Githioro"],
+                OlKalou: ["Karau", "Mirangine"],
+                Ndaragwa: ["Leshau", "Kiriita", "Ndaragwa"]
+            };
+            
+                // Get references to the select elements
+                const countySelect = document.getElementById("county");
+                const constituencySelect = document.getElementById("constituency");
+                const wardSelect = document.getElementById("ward");
+        
+                // Populate the constituencies dropdown based on the selected county
+                countySelect.addEventListener("change", function () {
+                    const selectedCounty = countySelect.options[countySelect.selectedIndex].text;
+                    const constituencies = countyConstituencies[selectedCounty] || [];
+                    
+                    // Clear the constituency dropdown
+                    constituencySelect.innerHTML = '<option value="">-- Select Constituency --</option>';
+                    wardSelect.innerHTML = '<option value="">-- Select Ward --</option>'; // Reset ward dropdown
+        
+                    // Populate the constituency dropdown
+                    constituencies.forEach(constituency => {
+                        const option = document.createElement("option");
+                        option.value = constituency;
+                        option.text = constituency;
+                        constituencySelect.appendChild(option);
+                    });
+                });
+        
+                // Populate the wards dropdown based on the selected constituency
+                constituencySelect.addEventListener("change", function () {
+                    const selectedConstituency = constituencySelect.options[constituencySelect.selectedIndex].text;
+                    const wards = constituencyWard[selectedConstituency] || [];
+                    
+                    // Clear the ward dropdown
+                    wardSelect.innerHTML = '<option value="">-- Select Ward --</option>';
+        
+                    // Populate the ward dropdown
+                    wards.forEach(ward => {
+                        const option = document.createElement("option");
+                        option.value = ward;
+                        option.text = ward;
+                        wardSelect.appendChild(option);
+                    });
+                });
+            </script>
+            <button type="submit"><a href="candidates.html">Submit</a></button>
+        </body>
+        </html>

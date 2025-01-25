@@ -1,0 +1,74 @@
+*{
+    body{
+        height: 100vh;
+        display: flex;
+        background-color: black;
+        justify-content: center;
+        align-items: center;
+
+    }
+    form{
+        display:flex;
+        flex-direction:column;
+        margin-top: 35px;
+        width: 60vh;
+        background-color: white;
+        border-style: solid;
+        border-color:green;
+        border-radius: 10px;
+
+    }
+    label{
+        display:block;
+        font-size:20px;
+        padding-bottom:5px;
+        margin-left:20px;
+        margin-top: 15px;
+    }
+    input{
+        display: block;
+        border-style:solid;
+        border-color:blue;
+        border-radius:5px;
+        padding:10px;
+        margin-bottom:15px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    button{
+        background-color:grey;
+        color:pink;
+        margin-top:5px;
+        padding:15px 20px;
+        border-radius: 8px;
+        font-size: 20px;
+    }
+    button:hover{
+        cursor:pointer;
+        background-color:green;
+    }
+    .google-button{
+        display: block;
+        padding: 10px 10px;
+        cursor: pointer;
+        height: 50px;
+        margin:20px 20px;
+
+    }
+    .facebook-button{
+        display: block;
+        padding: 10px 10px;
+        cursor: pointer;
+        
+        height: 50px;
+        margin:20px 20px; 
+    }
+    .apple-button{
+        display: block;
+        padding: 10px 10px;
+        cursor: pointer;
+       
+        margin:20px 20px;
+        height: 50px;
+    }
+}
