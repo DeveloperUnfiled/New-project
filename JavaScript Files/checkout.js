@@ -5,7 +5,8 @@ import {deliveryOption} from './deliveryoption.js';
 dayjs();
 console.log(dayjs);
 
-let cartSummaryHTML= '';
+function renderOrderSummary(){
+  let cartSummaryHTML= '';
 cart.forEach((cartItem)=>{
     const productId= cartItem.productId;
     let matchingProduct;
@@ -117,5 +118,9 @@ document.querySelectorAll('.js-delivery-option').forEach((element)=>{
   element.addEventListener('click',()=>{
     const {productId, deliveryOptionId}= element.dataset;
     updateDeliveryOption(productId, deliveryId);
+    renderOrderSummary();
   });
 });
+
+};
+renderOrderSummary();
