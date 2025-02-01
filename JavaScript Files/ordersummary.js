@@ -1,15 +1,16 @@
-import {cart,removeFromCart,updateDeliveryOption} from './cart.js';
+import {cart, removeFromCart, updateDeliveryOption} from './cart.js';
 import {products, getProduct} from './product.js';
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 import {deliveryOption, getDeliveryOption} from './deliveryoption.js';
+import {renderPaymentSummary} from './payment.js';
 dayjs();
 console.log(dayjs());
 
 export function renderOrderSummary(){
   let cartSummaryHTML= '';
 cart.forEach((cartItem)=>{
-    const productId= cartItem.productId;
-    const matchingProduct= getProduct(productId);
+const productId= cartItem.productId;
+const matchingProduct= getProduct(productId);
 const deliveryOptionId= cartItem.deliveryOptionId;
 const deliveryOptions= getDeliveryOption(deliveryOptionId);
 const today= dayjs();
@@ -79,7 +80,7 @@ function deliveryOptionsHTML(matchingProduct,cartItem){
     `<div class="delivery-option js-delivery-option"
     data-product-id="${matchingProduct.id}"
     data-delivery-option-id="${deliveryOption.id}">
-      <input type="radio" ${isChecked? 'checked': ''}
+      <input type="radio" ${isChecked ?'checked':''}
         class="delivery-option-input"
         name="delivery-option-${matchingProduct.id}">
       <div>
@@ -101,6 +102,8 @@ document.querySelectorAll('.js-delete-link').forEach((link)=>{
         removeFromCart(productId);
         const container= document.querySelector(`[data-cart-item-container="${productId}"]`);
         container.remove();
+
+        renderPaymentSummary();
     });
 });
 
@@ -109,8 +112,9 @@ document.querySelectorAll('.js-delivery-option').forEach((element)=>{
     const {productId, deliveryOptionId}= element.dataset;
     updateDeliveryOption(productId, deliveryOptionId);
     renderOrderSummary();
+    renderPaymentSummary();
   });
 });
 
 };
-renderOrderSummary();
+

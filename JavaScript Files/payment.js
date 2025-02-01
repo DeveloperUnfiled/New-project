@@ -8,13 +8,12 @@ export function renderPaymentSummary(){
     let shippingPriceCents= 0;
     cart.forEach((cartItem)=>{
        const product= getProduct(cartItem.productId);
-       productPriceCents += product.priceCents * cartItem.quantity;
-
-       const deliveryOption= getDeliveryOption(cartItem.deliveryOptionId);
-        shippingPriceCents += deliveryOption.pricecents;
+     productPriceCents += product.priceCents * cartItem.quantity;
+    const deliveryOption= getDeliveryOption(cartItem.deliveryOptionId);
+    shippingPriceCents += deliveryOption.priceCents;
     });
     const totalBeforeTaxCents= productPriceCents + shippingPriceCents;
-    const taxCents = totalBeforeTaxCents * 0.1;
+    const taxCents = Math.round(totalBeforeTaxCents * 0.1);
     const totalCents= totalBeforeTaxCents + taxCents;
 
     const paymentSummaryHTML= `
@@ -23,13 +22,13 @@ export function renderPaymentSummary(){
         </div>
 
         <div class="payment-summary-row">
-        <div>Items (3):</div>
+        <div>Items ${(cart.length)}:</div>
         <div class="payment-summary-money">$${(productPriceCents/100).toFixed(2)}</div>
         </div>
 
         <div class="payment-summary-row">
         <div>Shipping &amp; handling:</div>
-        <div class="payment-summary-money">$${(shippingPricecents/100).toFixed(2)}</div>
+        <div class="payment-summary-money">$${(shippingPriceCents/100).toFixed(2)}</div>
         </div>
 
         <div class="payment-summary-row subtotal-row">

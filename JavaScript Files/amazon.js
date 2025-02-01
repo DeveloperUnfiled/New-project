@@ -46,6 +46,7 @@ products.forEach((product)=>{
             <img src="images/checkmark.png">
             Added
           </div>
+          <p class="added-to-cart"></p>
           <button class="add-to-cart-button button-primary js-add-to-cart"data-product-name= "${product.id}">
             Add to Cart
           </button>
@@ -67,5 +68,6 @@ document.querySelectorAll('.js-add-to-cart').forEach((button)=>{
     const productId= button.dataset.productId;
     addToCart(productId);
     updateCartQuantity(); 
+    document.querySelector('.added-to-cart').innerHTML= `Added To Cart`;
   });
 });
